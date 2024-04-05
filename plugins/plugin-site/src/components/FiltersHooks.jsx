@@ -31,7 +31,7 @@ function useFilterHooks() {
         newData = {...DEFAULT_DATA, ...newData};
         setData(newData);
     };
-
+    
     ['sort', 'categories', 'labels', 'view', 'page', 'query'].forEach(key => {
         ret[`set${ucFirst(key)}`] = (val) => {
             const newData = {...data, [key]: val};
@@ -54,7 +54,7 @@ function useFilterHooks() {
     };
 
     ret.toggleCategory = (category) => {
-        const vals = new Set(data.categories);
+        const vals = new Set(data.categories.join().split(','));
         if (vals.has(category.id)) {
             vals.delete(category.id);
         } else {
@@ -64,7 +64,7 @@ function useFilterHooks() {
     };
 
     ret.toggleLabel = (label) => {
-        const vals = new Set(data.labels);
+        const vals = new Set(data.labels.join().split(','));
         if (vals.has(label.id)) {
             vals.delete(label.id);
         } else {

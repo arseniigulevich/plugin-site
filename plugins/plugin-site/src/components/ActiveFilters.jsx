@@ -41,7 +41,7 @@ function ActiveFilters({activeCategories, activeLabels, activeQuery, clearQuery,
         return (
             <ActiveCategory
                 key={`category_${activeCategory}`}
-                category={categories[activeCategories]}
+                category={categories[activeCategory]}
                 toggleCategory={toggleCategory}
             />
         );

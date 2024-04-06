@@ -38,7 +38,7 @@ const doSearch = (data, setResults, categoriesMap) => {
     const index = searchClient.initIndex('Plugins');
     const filters = [];
     if (labels && labels.length) {
-        filters.push(`(${labels.join().split(',').map(l => `labels:${l}`).join(' OR ')})`);
+        filters.push(`(${labels.map(l => `labels:${l}`).join(' OR ')})`);
     }
 
     if (page === undefined || page === null) {

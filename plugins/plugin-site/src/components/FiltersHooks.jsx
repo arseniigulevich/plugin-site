@@ -23,10 +23,10 @@ function useFilterHooks() {
     ret.setData = (newData) => {
         delete newData[''];
         if (!Array.isArray(newData.categories)) {
-            newData.categories = newData.categories ? newData.categories.split(",") : [newData.categories]; 
+            newData.categories = [newData.categories]; 
         }
         if (!Array.isArray(newData.labels)) {
-            newData.labels = newData.labels ? newData.labels.split(",") : [newData.labels];
+            newData.labels = [newData.labels];
         }
         newData = {...DEFAULT_DATA, ...newData};
         setData(newData);

@@ -23,10 +23,10 @@ function useFilterHooks() {
     ret.setData = (newData) => {
         delete newData[''];
         if (!Array.isArray(newData.categories)) {
-            newData.categories = [newData.categories];
+            newData.categories = newData.categories ? newData.categories.split(",") : [newData.categories]; 
         }
         if (!Array.isArray(newData.labels)) {
-            newData.labels = [newData.labels];
+            newData.labels = newData.labels ? newData.labels.split(",") : [newData.labels];
         }
         newData = {...DEFAULT_DATA, ...newData};
         setData(newData);
@@ -54,7 +54,7 @@ function useFilterHooks() {
     };
 
     ret.toggleCategory = (category) => {
-        const vals = new Set(data.categories.join().split(','));
+        const vals = new Set(data.categories);
         if (vals.has(category.id)) {
             vals.delete(category.id);
         } else {
@@ -64,7 +64,7 @@ function useFilterHooks() {
     };
 
     ret.toggleLabel = (label) => {
-        const vals = new Set(data.labels.join().split(','));
+        const vals = new Set(data.labels);
         if (vals.has(label.id)) {
             vals.delete(label.id);
         } else {
